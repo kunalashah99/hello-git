@@ -42,6 +42,8 @@ git pull origin main
 
 ## Hosting a static website
 
+I set up a simple portfolio template for you to use.
+
 ### Forking a repo
 ![fork icon](https://github.com/channelCS/github-buttons/blob/master/2x/github_fork.png)
 
@@ -49,19 +51,31 @@ git pull origin main
 Click on the `Fork` button  to create a remote copy first. Then go to this forked repo page and clone it(Notice the url of the fork is different from the original). 
 
 ### Creating a branch
-
+We will create a branch called `pages` which will used to host the website(basically what is contained in the `website` folder in the repo)
 The easiest way
 ```bash
 git checkout -b pages
 ```
 
 ### Pushing to branch
-Edit the `html` file to your needs.
+In order to use the `Github pages` feature, the `index.html` needs to be located either in the root directory or in a `docs` folder. So, let's make this change first. Make sure you are in the `pages` branch of your forked repo.(You can check this by running `git branch` command from the terminal, the current branch that you are on should be highlighted). Rename the folder using git and then push the chnages to the correct branch
+```bash
+git mv website docs
+git commit -m "updating webpage"
+git push origin pages
+```
+Head over to Github page on your browser, and go to `Settings` -> `Pages` tab. Set `Branch` to pages and click on `Save`. And now we wait... In about 3-5 minutes, you should see a message that says your website is live(Refresh your page if you dont see a message even after 5 minutes). Click on the url to open it up. 
+
+The urls normally follow the format `hhtps://<github userID>/<Repo name>/`
+
+
+Open the `html` file and edit it to your needs(like replacing `NAME HERE` with your own name). Push these changes and watch the page rebuild to display the updated info.
 ```bash
 git add .
 git commit -m "updating webpage"
 git push origin pages
 ```
+> `.` is used to when you want to select everything. So, if you have a lot of files that need to be push, you could use `git add .` or even `git commit -a`  to make things easy, although this is not recommended until you actually have a proper `.gitignore` set up.
 
 ## Participants
 - Thomas
